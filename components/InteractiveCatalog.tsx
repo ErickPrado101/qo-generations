@@ -37,8 +37,8 @@ function OptionButton({
       className={
         "group rounded-2xl border p-4 text-left text-sm transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/40 dark:focus-visible:outline-white/40 sm:p-5 " +
         (selected
-          ? "border-black/15 bg-white/85 text-black shadow-[0_18px_60px_rgba(0,0,0,0.12)] dark:border-white/35 dark:bg-white/10 dark:text-white"
-          : "border-black/10 bg-white/70 text-black/80 hover:-translate-y-1 hover:border-black/25 hover:bg-white/90 dark:border-white/10 dark:bg-black/20 dark:text-white/90 dark:hover:border-white/30 dark:hover:bg-white/5")
+          ? "border-black/15 bg-white/85 text-black shadow-[0_18px_60px_rgba(0,0,0,0.12)] dark:border-white/25 dark:bg-white/[0.08] dark:text-white"
+          : "border-black/10 bg-white/70 text-black/80 hover:-translate-y-1 hover:border-black/25 hover:bg-white/90 dark:border-white/10 dark:bg-white/[0.05] dark:text-white/85 dark:hover:border-white/20 dark:hover:bg-white/[0.07]")
       }
     >
       <div className="flex items-center justify-between gap-4">
@@ -47,8 +47,8 @@ function OptionButton({
           className={
             "h-2.5 w-2.5 rounded-full transition " +
             (selected
-              ? "bg-black/70 shadow-[0_0_18px_rgba(0,0,0,0.25)] dark:bg-white dark:shadow-[0_0_18px_rgba(255,255,255,0.6)]"
-              : "bg-black/20 group-hover:bg-black/35 dark:bg-white/20 dark:group-hover:bg-white/40")
+              ? "bg-black/70 shadow-[0_0_18px_rgba(0,0,0,0.25)] dark:bg-white/80 dark:shadow-[0_0_18px_rgba(255,255,255,0.22)]"
+              : "bg-black/20 group-hover:bg-black/35 dark:bg-white/15 dark:group-hover:bg-white/25")
           }
         />
       </div>
@@ -131,8 +131,8 @@ export function InteractiveCatalog() {
         className={
           "rounded-full border px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] transition " +
           (active
-            ? "border-black/20 bg-white/80 text-black/80 dark:border-white/25 dark:bg-white/10 dark:text-white"
-            : "border-black/10 bg-white/60 text-black/60 hover:border-black/25 hover:bg-white/80 dark:border-white/10 dark:bg-white/5 dark:text-white/70")
+            ? "border-black/20 bg-white/80 text-black/80 dark:border-white/25 dark:bg-white/[0.08] dark:text-white"
+            : "border-black/10 bg-white/60 text-black/60 hover:border-black/25 hover:bg-white/80 dark:border-white/10 dark:bg-white/[0.05] dark:text-white/70 dark:hover:bg-white/[0.07]")
         }
       >
         {label}
@@ -142,7 +142,7 @@ export function InteractiveCatalog() {
 
   return (
     <div className="mt-10 grid grid-cols-1 gap-7 lg:grid-cols-[1fr,360px]">
-      <div className="rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-soft backdrop-blur-xl dark:border-white/10 dark:bg-gradient-to-br dark:from-white/[0.07] dark:to-white/[0.02] dark:shadow-glass sm:p-8">
+      <div className="rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-soft backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.05] dark:shadow-glass sm:p-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="text-xs font-extrabold uppercase tracking-[0.16em] text-black/70 dark:text-white/70">
@@ -158,7 +158,7 @@ export function InteractiveCatalog() {
           </div>
         </div>
 
-        <div className="mt-5 h-2 w-full overflow-hidden rounded-full border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5">
+        <div className="mt-5 h-2 w-full overflow-hidden rounded-full border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/[0.06]">
           <div
             className="h-full rounded-full bg-black/40 transition-all dark:bg-white/60"
             style={{ width: `${progress}%` }}
@@ -247,7 +247,7 @@ export function InteractiveCatalog() {
               "rounded-2xl border px-5 py-3 text-xs font-extrabold uppercase tracking-[0.12em] transition " +
               (step === 1
                 ? "border-black/10 bg-black/5 text-black/35 dark:border-white/10 dark:bg-white/5 dark:text-white/35"
-                : "border-black/10 bg-white/70 text-black/70 hover:border-black/25 hover:bg-white/90 dark:border-white/10 dark:bg-white/5 dark:text-white/75")
+                : "border-black/10 bg-white/70 text-black/70 hover:border-black/25 hover:bg-white/90 dark:border-white/10 dark:bg-black/30 dark:text-white/80 dark:hover:bg-black/45")
             }
           >
             Voltar
@@ -261,7 +261,7 @@ export function InteractiveCatalog() {
               "rounded-2xl border px-5 py-3 text-xs font-extrabold uppercase tracking-[0.12em] transition " +
               (step === 3 || !canGoNext
                 ? "border-black/10 bg-black/5 text-black/35 dark:border-white/10 dark:bg-white/5 dark:text-white/35"
-                : "border-black/10 bg-white/70 text-black/70 hover:border-black/25 hover:bg-white/90 dark:border-white/10 dark:bg-white/5 dark:text-white/75")
+                : "border-black/10 bg-white/70 text-black/70 hover:border-black/25 hover:bg-white/90 dark:border-white/10 dark:bg-black/30 dark:text-white/80 dark:hover:bg-black/45")
             }
           >
             Próximo
@@ -270,7 +270,7 @@ export function InteractiveCatalog() {
       </div>
 
       <aside className="glass h-fit rounded-[2rem] p-4 sm:p-5 lg:sticky lg:top-[96px]">
-        <div className="rounded-2xl border border-black/10 bg-white/70 p-4 shadow-soft dark:border-white/10 dark:bg-black/20 sm:p-5">
+        <div className="rounded-2xl border border-black/10 bg-white/70 p-4 shadow-soft dark:border-white/10 dark:bg-white/[0.05] sm:p-5">
           <div className="text-xs font-extrabold uppercase tracking-[0.16em] text-black/70 dark:text-white/70">
             Sua seleção
           </div>
@@ -300,12 +300,12 @@ export function InteractiveCatalog() {
             </button>
           </div>
 
-          <div className="mt-6 rounded-2xl border border-black/10 bg-white/80 p-4 text-sm text-black/65 dark:border-white/10 dark:bg-white/5 dark:text-white/70">
+          <div className="mt-6 rounded-2xl border border-black/10 bg-white/80 p-4 text-sm text-black/65 dark:border-white/10 dark:bg-white/[0.05] dark:text-white/70">
             Dica: se você quiser lançar rápido, selecione pelo menos 1 item de assistência.
           </div>
         </div>
 
-        <div className="mt-4 rounded-2xl border border-black/10 bg-white/80 p-4 text-sm text-black/65 dark:border-white/10 dark:bg-white/5 dark:text-white/70">
+        <div className="mt-4 rounded-2xl border border-black/10 bg-white/80 p-4 text-sm text-black/65 dark:border-white/10 dark:bg-white/[0.05] dark:text-white/70">
           Precisa de ajuda para escolher? Comece pelo tipo e eu adapto o resto com base no seu público.
         </div>
       </aside>
