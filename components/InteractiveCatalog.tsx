@@ -114,6 +114,9 @@ export function InteractiveCatalog() {
     if (typeof window !== "undefined") window.history.replaceState(null, "", hash);
   }
 
+  const nextStep: StepId = (step === 1 ? 2 : 3) as StepId;
+  const prevStep: StepId = (step === 3 ? 2 : 1) as StepId;
+
   function Badge({ label }: { label: string }) {
     return (
       <span className="inline-flex items-center rounded-full border border-black/10 bg-white/80 px-3 py-1 text-xs font-semibold text-black/70 dark:border-white/10 dark:bg-white/5 dark:text-white/70">
@@ -142,7 +145,7 @@ export function InteractiveCatalog() {
 
   return (
     <div className="mt-10 grid grid-cols-1 gap-7 lg:grid-cols-[1fr,360px]">
-      <div className="rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-soft backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.05] dark:shadow-glass sm:p-8">
+      <div className="glass rounded-[2rem] p-6 sm:p-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="text-xs font-extrabold uppercase tracking-[0.16em] text-black/70 dark:text-white/70">
@@ -179,7 +182,10 @@ export function InteractiveCatalog() {
                 <OptionButton
                   key={opt}
                   selected={sel.tipo === opt}
-                  onClick={() => setSel((s) => ({ ...s, tipo: opt }))}
+                  onClick={() => {
+                    setSel((s) => ({ ...s, tipo: opt }));
+                    goTo(2);
+                  }}
                 >
                   {opt}
                 </OptionButton>
@@ -200,7 +206,10 @@ export function InteractiveCatalog() {
                 <OptionButton
                   key={opt}
                   selected={sel.estilo === opt}
-                  onClick={() => setSel((s) => ({ ...s, estilo: opt }))}
+                  onClick={() => {
+                    setSel((s) => ({ ...s, estilo: opt }));
+                    goTo(3);
+                  }}
                 >
                   {opt}
                 </OptionButton>
@@ -241,7 +250,7 @@ export function InteractiveCatalog() {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <button
             type="button"
-            onClick={() => goTo((step === 1 ? 1 : (step - 1)) as StepId)}
+            onClick={() => goTo(prevStep)}
             disabled={step === 1}
             className={
               "rounded-2xl border px-5 py-3 text-xs font-extrabold uppercase tracking-[0.12em] transition " +
@@ -253,24 +262,30 @@ export function InteractiveCatalog() {
             Voltar
           </button>
 
-          <button
-            type="button"
-            onClick={() => goTo((step === 3 ? 3 : (step + 1)) as StepId)}
-            disabled={step === 3 || !canGoNext}
-            className={
-              "rounded-2xl border px-5 py-3 text-xs font-extrabold uppercase tracking-[0.12em] transition " +
-              (step === 3 || !canGoNext
-                ? "border-black/10 bg-black/5 text-black/35 dark:border-white/10 dark:bg-white/5 dark:text-white/35"
-                : "border-black/10 bg-white/70 text-black/70 hover:border-black/25 hover:bg-white/90 dark:border-white/10 dark:bg-black/30 dark:text-white/80 dark:hover:bg-black/45")
-            }
-          >
-            Próximo
-          </button>
+          {step < 3 ? (
+            <button
+              type="button"
+              onClick={() => goTo(nextStep)}
+              disabled={!canGoNext}
+              className={
+                "rounded-2xl border px-5 py-3 text-xs font-extrabold uppercase tracking-[0.12em] transition " +
+                (!canGoNext
+                  ? "border-black/10 bg-black/5 text-black/35 dark:border-white/10 dark:bg-white/5 dark:text-white/35"
+                  : "border-black/10 bg-white/70 text-black/70 hover:border-black/25 hover:bg-white/90 dark:border-white/10 dark:bg-black/30 dark:text-white/80 dark:hover:bg-black/45")
+              }
+            >
+              Próximo
+            </button>
+          ) : (
+            <a className="btn-primary" href={whatsappHref} target="_blank" rel="noreferrer">
+              Enviar para nosso agente
+            </a>
+          )}
         </div>
       </div>
 
       <aside className="glass h-fit rounded-[2rem] p-4 sm:p-5 lg:sticky lg:top-[96px]">
-        <div className="rounded-2xl border border-black/10 bg-white/70 p-4 shadow-soft dark:border-white/10 dark:bg-white/[0.05] sm:p-5">
+        <div className="rounded-2xl border border-[color:var(--line)] bg-transparent p-4 sm:p-5">
           <div className="text-xs font-extrabold uppercase tracking-[0.16em] text-black/70 dark:text-white/70">
             Sua seleção
           </div>

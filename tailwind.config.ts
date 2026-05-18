@@ -14,10 +14,25 @@ const config: Config = {
           "33%, 59%": { transform: "translateX(-33.333%)" },
           "66%, 92%": { transform: "translateX(-66.666%)" },
           "100%": { transform: "translateX(0)" }
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" }
+        },
+        fadeUp: {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" }
+        },
+        pulseSoft: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.7" }
         }
       },
       animation: {
-        slide: "slide 12s infinite"
+        slide: "slide 12s infinite",
+        float: "float 7s ease-in-out infinite",
+        fadeUp: "fadeUp 600ms ease both",
+        pulseSoft: "pulseSoft 2.6s ease-in-out infinite"
       },
       colors: {
         bg: {

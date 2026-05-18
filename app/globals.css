@@ -39,10 +39,7 @@ html {
 body {
   min-height: 100vh;
   color: var(--text);
-  background:
-    radial-gradient(circle at top left, rgba(133, 144, 150, 0.18), transparent 34%),
-    radial-gradient(circle at 80% 10%, rgba(174, 180, 184, 0.12), transparent 40%),
-    linear-gradient(135deg, var(--bg) 0%, var(--bg2) 48%, var(--bg3) 100%);
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 48%, var(--bg3) 100%);
 }
 
 * {
@@ -73,9 +70,10 @@ body {
   }
 
   .glass {
-    background: var(--glass);
+    background: var(--surface2);
     border: 1px solid var(--line);
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(10px) saturate(135%);
+    box-shadow: var(--shadow-glass);
   }
 
   .btn-primary {
@@ -86,6 +84,15 @@ body {
     position: relative;
     overflow: hidden;
     transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+
+  .btn-primary:active {
+    transform: translateY(0px) scale(0.99);
+  }
+
+  .btn-primary:focus-visible {
+    outline: 2px solid color-mix(in srgb, currentColor 35%, transparent);
+    outline-offset: 3px;
   }
 
   .btn-primary::after {
@@ -123,7 +130,7 @@ body {
   }
 
   .section {
-    @apply border-t border-white/10 py-16 sm:py-20 lg:py-24;
+    @apply py-16 sm:py-20 lg:py-24;
   }
 
   .section-title {

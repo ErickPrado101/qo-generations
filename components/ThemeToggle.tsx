@@ -41,7 +41,7 @@ export function ThemeToggle() {
       type="button"
       aria-label="Alternar tema"
       onClick={toggleTheme}
-      className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/40 text-[0px] text-black/80 transition hover:border-white/25 hover:bg-white/60 dark:bg-white/5 dark:text-white/85"
+      className="grid h-11 w-11 place-items-center rounded-2xl border border-[color:var(--line)] bg-transparent text-[0px] text-black/80 transition hover:bg-black/5 dark:text-white/85 dark:hover:bg-white/10"
       title={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
     >
       {theme === "dark" ? <SunIcon /> : <MoonIcon />}
