@@ -58,13 +58,13 @@ export function NavbarClient() {
           aria-label="Quality Originals Home"
           onClick={() => setOpen(false)}
         >
-          <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-black/70 shadow-soft dark:bg-black/60">
+          <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-white/10 bg-black/70 shadow-soft dark:bg-black/60">
             <img
               src="/Icon_q.o.webp"
               alt="Ícone Quality Originals"
               width={34}
               height={34}
-              className="h-9 w-9 object-contain"
+              className="h-9 w-9 rounded-full object-cover"
             />
           </div>
           <div className="hidden sm:block">
