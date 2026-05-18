@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -15,7 +14,7 @@ const items: Item[] = [
 ];
 
 export function NavbarClient() {
-  const [active, setActive] = useState<string>("home");
+  const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
 
   const hashItems = useMemo(() => items.map((x) => ({ ...x, href: `#${x.id}` })), []);
@@ -34,6 +33,8 @@ export function NavbarClient() {
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el));
 
+    if (!sections.length) return;
+
     const io = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -49,7 +50,7 @@ export function NavbarClient() {
   }, []);
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/20 backdrop-blur-xl">
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-white shadow-soft dark:bg-black">
       <div className="container-x flex h-[78px] items-center justify-between">
         <Link
           href="#home"
@@ -57,8 +58,14 @@ export function NavbarClient() {
           aria-label="Quality Originals Home"
           onClick={() => setOpen(false)}
         >
-          <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft">
-            <Image src="/Icon_q.o.webp" alt="Ícone Quality Originals" width={44} height={44} priority />
+          <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-black/70 shadow-soft dark:bg-black/60">
+            <img
+              src="/Icon_q.o.webp"
+              alt="Ícone Quality Originals"
+              width={34}
+              height={34}
+              className="h-9 w-9 object-contain"
+            />
           </div>
           <div className="hidden sm:block">
             <div className="text-[0.74rem] font-semibold uppercase tracking-[0.26em] text-black/65 dark:text-white/70">
@@ -71,18 +78,10 @@ export function NavbarClient() {
           {hashItems.map((it) => (
             <Link
               key={it.id}
-              className={
-                "nav-link relative " + (active === it.id ? "text-white" : "")
-              }
+              className="nav-link relative"
               href={it.href}
             >
               {it.label}
-              <span
-                className={
-                  "pointer-events-none absolute -bottom-1 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-white/70 transition-all duration-200 " +
-                  (active === it.id ? "w-6" : "")
-                }
-              />
             </Link>
           ))}
         </nav>
@@ -94,7 +93,7 @@ export function NavbarClient() {
             type="button"
             aria-label="Abrir menu"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5 text-xs font-extrabold uppercase tracking-[0.12em] text-white/80 transition hover:border-white/25 hover:bg-white/10 md:hidden"
+            className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/40 text-xs font-extrabold uppercase tracking-[0.12em] text-black/80 transition hover:border-white/25 hover:bg-white/60 dark:bg-white/5 dark:text-white/80 md:hidden"
           >
             Menu
           </button>
@@ -105,15 +104,15 @@ export function NavbarClient() {
         aria-label="Menu mobile"
       >
         <div className="container-x pb-5">
-          <div className="glass rounded-3xl p-3">
+          <div className="rounded-3xl border border-white/10 bg-white p-2 shadow-soft dark:bg-black">
             {hashItems.map((it) => (
               <Link
                 key={it.id}
                 href={it.href}
                 onClick={() => setOpen(false)}
                 className={
-                  "block rounded-2xl px-4 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/5 " +
-                  (active === it.id ? "bg-white/5" : "")
+                  "block rounded-2xl px-4 py-3 text-sm font-semibold text-black/80 transition hover:bg-black/5 dark:text-white/85 dark:hover:bg-white/10 " +
+                  (active === it.id ? "" : "")
                 }
               >
                 {it.label}

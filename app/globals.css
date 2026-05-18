@@ -6,6 +6,7 @@
   --line: rgba(255, 255, 255, 0.12);
   --muted: rgba(255, 255, 255, 0.70);
   --text: rgba(255, 255, 255, 0.92);
+  --accent: #d6b25e;
   --bg: #050505;
   --bg2: #151719;
   --bg3: #020202;
@@ -20,6 +21,7 @@ html.light {
   --line: rgba(10, 12, 14, 0.12);
   --muted: rgba(10, 12, 14, 0.78);
   --text: rgba(10, 12, 14, 0.96);
+  --accent: #d4af37;
   --bg: #f5f6f7;
   --bg2: #eef0f2;
   --bg3: #ffffff;
@@ -133,4 +135,17 @@ body {
     @apply mt-5 max-w-3xl text-sm leading-relaxed sm:text-base lg:text-lg;
     color: var(--muted);
   }
+
+  .accent {
+    color: var(--text);
+  }
+}
+
+html.light .accent {
+  background: linear-gradient(135deg, #fff2b1 0%, #e8c86a 22%, #c89a1b 55%, #f4db8a 78%, #b8860b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.10);
 }

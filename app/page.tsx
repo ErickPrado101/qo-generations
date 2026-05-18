@@ -1,7 +1,6 @@
 import { BackToTop } from "@/components/BackToTop";
 import { InteractiveCatalog } from "@/components/InteractiveCatalog";
 import { NavbarClient } from "@/components/NavbarClient";
-import Image from "next/image";
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
@@ -33,8 +32,8 @@ export default function Page() {
           <div className="container-x grid min-h-screen grid-cols-1 items-center gap-10 pb-16 pt-[120px] sm:pt-[140px] lg:grid-cols-2 lg:gap-12 lg:pb-20">
             <div className="relative">
               <Pill>Criação de marcas editáveis</Pill>
-              <h1 className="mt-6 max-w-2xl text-balance text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.08em] text-white sm:text-6xl lg:text-7xl">
-                Empresas prontas para nascer.
+              <h1 className="mt-6 max-w-2xl text-balance text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.08em] text-black/90 dark:text-white sm:text-6xl lg:text-7xl">
+                Empresas prontas para <span className="accent">nascer</span>.
               </h1>
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-black/70 dark:text-white/70 sm:text-base lg:text-lg">
                 A Quality Originals cria conceitos de empresas, identidades visuais e marcas pré-prontas para
@@ -59,27 +58,26 @@ export default function Page() {
                 <div className="relative grid min-h-[420px] place-items-center px-8 sm:min-h-[520px] sm:px-10">
                   <div className="text-center">
                     <div className="mx-auto grid place-items-center">
-                      <Image
+                      <img
                         src="/image3.webp"
                         alt="Logo Quality Originals"
-                        width={560}
-                        height={560}
-                        priority
-                        className="h-auto w-[280px] opacity-90 drop-shadow-[0_0_26px_rgba(255,255,255,0.16)] sm:w-[340px]"
+                        width={1200}
+                        height={1200}
+                        className="h-auto w-[380px] opacity-95 drop-shadow-[0_0_30px_rgba(0,0,0,0.18)] dark:drop-shadow-[0_0_34px_rgba(255,255,255,0.18)] sm:w-[460px] lg:w-[560px]"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute bottom-5 left-5 right-5 overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl sm:bottom-6 sm:left-6 sm:right-6">
+                <div className="absolute bottom-5 left-5 right-5 overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-black/40 sm:bottom-6 sm:left-6 sm:right-6">
                   <div className="flex w-[300%] animate-slide">
-                    <div className="w-full px-6 py-5 text-sm leading-relaxed text-white/90">
+                    <div className="w-full px-6 py-5 text-sm leading-relaxed text-black/80 dark:text-white/90">
                       Criamos empresas e marcas com base estratégica para quem quer empreender sem começar do zero.
                     </div>
-                    <div className="w-full px-6 py-5 text-sm leading-relaxed text-white/90">
+                    <div className="w-full px-6 py-5 text-sm leading-relaxed text-black/80 dark:text-white/90">
                       Editamos conceito, identidade visual, tom e apresentação para adaptar cada projeto ao seu público.
                     </div>
-                    <div className="w-full px-6 py-5 text-sm leading-relaxed text-white/90">
+                    <div className="w-full px-6 py-5 text-sm leading-relaxed text-black/80 dark:text-white/90">
                       Reformamos ideias antigas em negócios modernos, profissionais e prontos para novas oportunidades.
                     </div>
                   </div>
@@ -91,7 +89,7 @@ export default function Page() {
 
         <section id="quem-somos" className="section">
           <div className="container-x">
-            <h2 className="section-title">Quem somos</h2>
+            <h2 className="section-title">Quem <span className="accent">somos</span></h2>
             <p className="section-desc">
               Somos um estúdio de criação empresarial focado em transformar ideias em marcas estruturadas.
               Desenvolvemos negócios pré-prontos, editáveis e personalizáveis para empreendedores que desejam acelerar
@@ -117,7 +115,7 @@ export default function Page() {
 
         <section id="catalogo" className="section">
           <div className="container-x">
-            <h2 className="section-title">Catálogo</h2>
+            <h2 className="section-title"><span className="accent">Catálogo</span></h2>
             <p className="section-desc">
               Navegue pelo processo de criação. Escolha o tipo de negócio, defina a estilização e adicione serviços
               complementares para montar uma marca alinhada ao seu objetivo.
@@ -132,8 +130,8 @@ export default function Page() {
             <div className="rounded-[2.25rem] border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-10 shadow-glass md:p-12">
               <div className="grid grid-cols-1 items-center gap-7 md:grid-cols-[1fr,auto]">
                 <div>
-                  <h2 className="section-title">Fale conosco</h2>
-                  <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/70 md:text-base">
+                  <h2 className="section-title">Fale <span className="accent">conosco</span></h2>
+                  <p className="mt-5 max-w-2xl text-sm leading-relaxed text-black/70 dark:text-white/70 md:text-base">
                     Quer montar uma empresa com aparência profissional, identidade clara e base pronta para crescer?
                     Entre em contato e descubra qual modelo da Quality Originals combina com sua próxima oportunidade.
                   </p>
@@ -152,8 +150,8 @@ export default function Page() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-black/70 py-10">
-        <div className="container-x flex flex-col justify-between gap-4 text-sm text-white/60 md:flex-row">
+      <footer className="border-t border-white/10 bg-white/70 py-10 dark:bg-black/70">
+        <div className="container-x flex flex-col justify-between gap-4 text-sm text-black/60 dark:text-white/60 md:flex-row">
           <span>© 2026 Quality Originals. Todos os direitos reservados.</span>
           <span>Criar · Editar · Reformar · Expandir</span>
         </div>
